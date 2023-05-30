@@ -3,8 +3,8 @@
 
 MEMORY
 {
-	Flash (rx)  : o = 0x08000000, l = 128K
-	SRAM  (rwx) : o = 0x20000000, l = 20K
+	Flash (rx)  : o = 0x00000000, l = 256K
+	SRAM  (rwx) : o = 0x20000000, l = 32K
 }
 
 SECTIONS
@@ -37,7 +37,4 @@ SECTIONS
 		. = ALIGN(4);
 		_E_bss = .;
 	}>SRAM
-
-	. = . + 0x1000;
-	_stack_top = .;
 }

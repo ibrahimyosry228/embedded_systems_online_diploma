@@ -1,0 +1,1 @@
+-I inc/. -Wall -Werror -g -gdwarf-2 -std=c99 -O0 -o hima.exe

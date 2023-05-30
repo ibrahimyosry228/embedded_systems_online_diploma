@@ -11,33 +11,41 @@ SECTIONS
 {	
 	.text :
 	{
-		. = ALIGN(4);
 		_S_text = .;
 		*(.vectors)
-		*(.text)
-		*(.rodata)
+		. = ALIGN(4);
+		*(.text*)
 		. = ALIGN(4);
 		_E_text = .;
+	}>Flash
+
+	.rodata :
+	{
+		_S_rodata = .;
+		*(.rodata*)
+		. = ALIGN(4);
+		_E_rodata = .;
 	}>Flash
 	
 	.data :
 	{
-		. = ALIGN(4);
 		_S_data = .;
-		*(.data)
+		*(.data*)
 		. = ALIGN(4);
 		_E_data = .;
 	}>SRAM AT>Flash
 	
 	.bss :
 	{
-		. = ALIGN(4);
 		_S_bss = .;
-		*(.bss)
+		*(.bss*)
 		. = ALIGN(4);
 		_E_bss = .;
 	}>SRAM
 
+	. = . + 0x1000;
+	_heap_end = .;
+	
 	. = . + 0x1000;
 	_stack_top = .;
 }

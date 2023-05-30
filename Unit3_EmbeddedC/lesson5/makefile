@@ -1,8 +1,8 @@
-#Author: Ibrahim Yosry
+#copyright: Ibrahim Yosry
 
 PROJECT=learn-in-depth_cortex_m3
 CC=arm-none-eabi-
-CFLAGS=-mcpu=cortex-m3 -gdwarf-2
+CFLAGS=-mthumb -mcpu=cortex-m3 -gdwarf-2
 INCS=-I .
 LIBS=
 SRC=$(wildcard *.c)

@@ -4,11 +4,11 @@
 #include <stdint.h>
 
 extern uint32_t _stack_top;
-extern uint32_t _S_text, _E_text, _S_data, _E_data, _S_bss, _E_bss;
+extern uint32_t _S_text, _E_text, _S_rodata, _E_rodata, _S_data, _E_data, _S_bss, _E_bss;
+extern int main();
 
 void _Reset_Handler();
 void _Default_Handler();
-extern int main(void);
 
 void _NMI_Handler()             __attribute__((weak, alias ("_Default_Handler")));
 void _HardFault_Handler()       __attribute__((weak, alias ("_Default_Handler")));
@@ -161,7 +161,7 @@ void _Reset_Handler()
 {
     /*copy .data section from Flash to SRAM*/
     uint8_t  data_size = (uint32_t)&_E_data - (uint32_t)&_S_data;
-    uint8_t* p_src = (uint8_t*)&_E_text;
+    uint8_t* p_src = (uint8_t*)&_E_rodata;
     uint8_t* p_dst = (uint8_t*)&_S_data;
     uint8_t  i;
     

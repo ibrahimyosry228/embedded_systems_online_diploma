@@ -87,3 +87,4 @@ _reset_handler:
     b .
 
 _vector_handler:
+    b _reset_handler
